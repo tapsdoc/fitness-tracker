@@ -1,0 +1,34 @@
+<app-header (sideNavToggle)="drawer.toggle()"></app-header>
+<mat-drawer-container class="example-container" autosize>
+	<mat-drawer #drawer class="example-sidenav" mode="side">
+		<mat-list role="list">
+			<mat-list-item role="listitem" *ngIf="!(isAuth$ | async)">
+				<a mat-list-item routerLink="signup" (click)="drawer.close()">
+					<mat-icon>face</mat-icon>
+					<span class="inline-block pl-1.5">Signup</span>
+				</a>
+			</mat-list-item>
+			<mat-list-item role="listitem" *ngIf="!(isAuth$ | async)">
+				<a mat-list-item routerLink="login" (click)="drawer.close()">
+					<mat-icon>input</mat-icon>
+					<span class="inline-block pl-1.5">Login</span>
+				</a>
+			</mat-list-item>
+			<mat-list-item role="listitem" *ngIf="isAuth$ | async">
+				<a mat-list-item routerLink="training" (click)="drawer.close()">
+					<mat-icon>fitness_center</mat-icon>
+					<span class="inline-block pl-1.5">Training</span>
+				</a>
+			</mat-list-item>
+			<mat-list-item role="listitem" *ngIf="isAuth$ | async">
+				<button mat-icon-button (click)="onLogout()" *ngIf="isAuth$ | async">
+					<mat-icon>eject</mat-icon>
+					<span class="nav-caption">Logout</span>
+				</button>
+			</mat-list-item>
+		</mat-list>
+	</mat-drawer>
+	<div class="example-sidenav-content">
+		<router-outlet></router-outlet>
+	</div>
+</mat-drawer-container>

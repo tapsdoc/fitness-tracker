@@ -1,0 +1,35 @@
+table {
+    width: 100%;
+}
+
+.mat-mdc-form-field {
+    font-size: 14px;
+    width: 60%;
+}
+
+td, th {
+    width: auto;
+}
+
+.demo-toggles {
+    display: flex;
+    flex-direction: column;
+}
+
+.demo-toggles * {
+    margin-bottom: 16px;
+}
+
+.demo-options {
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+}
+
+.demo-data * {
+    margin: 16px 0;
+}
+
+.demo-paginator {
+    width: 600px;
+}

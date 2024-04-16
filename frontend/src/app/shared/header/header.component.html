@@ -1,0 +1,15 @@
+<mat-toolbar color="primary">
+	<div class="sm:hidden">
+		<button type="button" mat-icon-button (click)="toggle()">
+			<mat-icon>menu</mat-icon>
+		</button>
+	</div>
+	<span>NG Fitness</span>
+	<span class="example-spacer"></span>
+	<div class="space-x-2 max-sm:hidden">
+		<a routerLink="signup" *ngIf="!(isAuth$ | async)">Signup</a>
+		<a routerLink="login" *ngIf="!(isAuth$ | async)">Login</a>
+		<a routerLink="training" *ngIf="isAuth$ | async">Training</a>
+		<a routerLink="login" *ngIf="isAuth$ | async" (click)="onLogout()">Logout</a>
+	</div>
+</mat-toolbar>

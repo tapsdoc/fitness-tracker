@@ -1,0 +1,74 @@
+<section class="ml-2 mt-4 max-sm:mt-2">
+	<h1 class="text-center justify-center text-7xl font-sans font-extrabold">Sign Up</h1>
+	<form class="example-form justify-center items-center"
+	      [formGroup]="signupForm"
+	      (ngSubmit)="onSubmit()"
+	      *ngIf="!(loading$ | async)"
+	>
+		<mat-form-field class="example-full-width">
+			<mat-label>First Name</mat-label>
+			<input matInput
+			       class="md:max-w-2xl"
+			       placeholder="first name"
+			       formControlName="firstName"
+			       required>
+			@if (firstName.hasError('required')) {
+				<mat-error>First name is <strong>required</strong></mat-error>
+			}
+		</mat-form-field>
+
+		<mat-form-field class="example-full-width">
+			<mat-label>Last Name </mat-label>
+			<input matInput
+			       class="md:max-w-2xl"
+			       placeholder="last name"
+			       formControlName="lastName"
+			       required>
+			@if (lastName.hasError('required')) {
+				<mat-error>Last name is <strong>required</strong></mat-error>
+			}
+		</mat-form-field>
+
+		<mat-form-field class="example-full-width">
+			<mat-label>Enter your email</mat-label>
+			<input matInput
+			       class="md:max-w-2xl"
+			       placeholder="pat@example.com"
+			       formControlName="email"
+			       required>
+			@if (email.hasError('email') && !email.hasError('required')) {
+				<mat-error>Please enter a valid email address</mat-error>
+			}
+			@if (email.hasError('required')) {
+				<mat-error>Email is <strong>required</strong></mat-error>
+			}
+		</mat-form-field>
+
+		<mat-form-field class="example-full-width">
+			<mat-label>Password</mat-label>
+			<input matInput type="password" formControlName="password" #message required>
+			<mat-hint align="end">{{ message.value.length }} / 4</mat-hint>
+			@if (password.hasError('required')) {
+				<mat-error>Password is <strong>required</strong></mat-error>
+			}
+			@if (password.hasError('minLength')) {
+				<mat-error>Password length is too short</mat-error>
+			}
+		</mat-form-field>
+
+		<div class="example-container my-2">
+			<p>
+				<mat-checkbox labelPosition="before" formControlName="confirm" required>Agree to Terms and Conditions
+				</mat-checkbox>
+			</p>
+		</div>
+
+		<button [disabled]="signupForm.invalid" type="submit"
+		        class="group relative flex w-full justify-center rounded-md border border-transparent py-2 bg-blue-500 hover:bg-blue-700 disabled:bg-blue-100 cursor-pointer disabled:cursor-auto text-white">
+			Signup
+		</button>
+	</form>
+	<div class="text-center my-4">
+		<app-loading-spinner *ngIf="loading$ | async"></app-loading-spinner>
+	</div>
+</section>

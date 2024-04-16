@@ -1,0 +1,32 @@
+.example-container {
+    width: 100%;
+    height: 100%;
+}
+
+.example-sidenav-content {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-content: space-between;
+    padding-top: 10px;
+}
+
+.example-sidenav {
+    padding: 10px;
+    width: 250px;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+a.header {
+    text-decoration: none;
+    color: white;
+    padding: 4px;
+}
+
+a.header:hover, a.header:active {
+    color: lightgray;
+}
